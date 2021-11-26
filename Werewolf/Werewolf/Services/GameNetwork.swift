@@ -29,7 +29,7 @@ class GameMultipeerSession: NSObject, ObservableObject {
     private var serviceBrowser: MCNearbyServiceBrowser
     private var advertiserAssistant: MCNearbyServiceAdvertiser?
     private var isHost: Bool = false
-    private var hostId: String = ""
+    var hostId: String = ""
     @Published var currentCard: Card? = nil
     var connectedPeers: [MCPeerID] = []
     var waitingForCards: Bool = false
@@ -51,6 +51,7 @@ class GameMultipeerSession: NSObject, ObservableObject {
         advertiserAssistant?.delegate = self
         advertiserAssistant?.startAdvertisingPeer()
         self.isHost = true
+        hostId = myPeerId.displayName
     }
     
     func join() {
@@ -137,12 +138,41 @@ class GameMultipeerSession: NSObject, ObservableObject {
         let werewolfAction = UIAlertAction(title: "Werewolf", style: .default, handler: { action in
             self.send(card: .wolf, id: id)
         })
+        
+        let tannerAction = UIAlertAction(title: "Tanner", style: .default, handler: { action in
+            self.send(card: .tanner, id: id)
+        })
+        
+        let cupidAction = UIAlertAction(title: "Cupid", style: .default, handler: { action in
+            self.send(card: .cupid, id: id)
+        })
+        
+        let bodyguard = UIAlertAction(title: "Bodyguard", style: .default, handler: { action in
+            self.send(card: .bodyguard, id: id)
+        })
+        
+        let cursed = UIAlertAction(title: "Cursed", style: .default, handler: { action in
+            self.send(card: .cursed, id: id)
+        })
+        
+        let hunter = UIAlertAction(title: "Hunter", style: .default, handler: { action in
+            self.send(card: .hunter, id: id)
+        })
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let alertController = UIAlertController(title: "Pick a card type", message: "", preferredStyle: .actionSheet)
         alertController.addAction(villagerAction)
         alertController.addAction(seerAction)
         alertController.addAction(werewolfAction)
+        alertController.addAction(tannerAction)
+        alertController.addAction(cupidAction)
+        alertController.addAction(bodyguard)
+        alertController.addAction(cursed)
+        alertController.addAction(hunter)
+        
         alertController.addAction(cancelAction)
+        
+        
+        
         if let appWindow = UIApplication.shared.keyWindow {
             appWindow.rootViewController?.present(alertController, animated: true, completion: nil)
         }
@@ -202,7 +232,11 @@ extension GameMultipeerSession: MCSessionDelegate {
                     self.sendHostID(hostId: self.myPeerId, id: peerID)
                 }
             }
-            delegate?.gamePlayersJoined()
+            
+            DispatchQueue.main.async {
+                self.delegate?.gamePlayersJoined()
+            }
+            
         case .connecting:
             print("Connecting \(peerID)")
         case .notConnected:
@@ -229,7 +263,7 @@ extension GameMultipeerSession: MCSessionDelegate {
             }
         } else if let string = String(data: data, encoding: .utf8), let card = CardType(rawValue: string) {
             print("recieved card")
-            if self.isHost {
+            if self.isHost || currentCard?.type == .wolf {
                 // update
                 let player = Player(name: "Player " + peerID.displayName, deviceID: peerID.displayName)
                 player.card = Card(name: card.name, type: card)

@@ -17,7 +17,6 @@ final class ApplicationCoordinator: Coordinator {
     var card: Card!
     var game: Game = Game()
     
-    
     // MARK: ViewControllers
     
     let lobbyVC = LobbyViewController()
@@ -34,10 +33,10 @@ final class ApplicationCoordinator: Coordinator {
         lobbyVC.delegate = self
         gameVC.delegate = self
         game.delegate = self
+        gamePlayersVC.delegate = self
         rootController = UINavigationController(rootViewController: lobbyVC)
         window.rootViewController = rootController
         window.makeKeyAndVisible()
-        game.setupCard()
     }
 }
 
@@ -52,6 +51,7 @@ extension ApplicationCoordinator: LobbyViewControllerDelegate {
     }
     
     func goToGame() {
+        gameVC.isHost = game.gameHost
         lobbyVC.navigationController?.pushViewController(gameVC, animated: true)
     }
 }
@@ -61,14 +61,6 @@ extension ApplicationCoordinator: GameViewControllerDelegate {
         if game.gameHost {
             DispatchQueue.main.async {
                 self.game.getPlayers()
-//                if self.gamePlayersVC.presenting {
-//                    //self.gamePlayersVC.gamePlayers.append(contentsOf: self.game.getPlayers())
-//                    //self.gamePlayersVC.collectionView.reloadData()
-//                } else {
-//                    //self.gamePlayersVC.gamePlayers = self.game.getPlayers()
-//                    self.gamePlayersVC.presenting = true
-//                    self.gameVC.present(self.gamePlayersVC, animated: true, completion: nil)
-//                }
             }
         }
     }
@@ -79,23 +71,37 @@ extension ApplicationCoordinator: GameViewControllerDelegate {
 }
 
 extension ApplicationCoordinator: GameDelegate {
-    func playersUpdated() {
-        print("app coordinator playersUpdated")
-        DispatchQueue.main.async {
-            if self.gamePlayersVC.presenting {
-                print(self.game.players)
-                self.gamePlayersVC.gamePlayers = self.game.players
-                self.gamePlayersVC.presenting = true
-                self.gamePlayersVC.collectionView.reloadData()
-            } else {
-                self.gamePlayersVC.gamePlayers = self.game.players
-                self.gamePlayersVC.presenting = true
-                
-                self.gameVC.present(self.gamePlayersVC, animated: true, completion: nil)
-                self.gamePlayersVC.collectionView.reloadData()
+    func playersUpdated(sessionState: GameSessionState) {
+        print(sessionState)
+        var gamePlayers = game.players.filter { game.deadPlayer.contains($0) }
+        let deadGamePlayers = game.players.filter { !game.deadPlayer.contains($0) }
+        deadGamePlayers.map { $0.playerInGame = false }
+        gamePlayers.append(contentsOf: deadGamePlayers)
+        if sessionState == .host || game.card.type == .wolf {
+            DispatchQueue.main.async {
+                self.gamePlayersVC.isWerewolf = self.game.card.type == .wolf
+                if self.gamePlayersVC.presenting {
+                    print(gamePlayers)
+                    self.gamePlayersVC.gamePlayers = gamePlayers
+                    self.gamePlayersVC.presenting = true
+                    self.gamePlayersVC.collectionView.reloadData()
+                } else {
+                    self.gamePlayersVC.gamePlayers = gamePlayers
+                    self.gamePlayersVC.presenting = true
+                    self.gameVC.present(self.gamePlayersVC, animated: true, completion: nil)
+                    self.gamePlayersVC.collectionView.reloadData()
+                }
             }
-            
         }
+    }
+    
+    func werewolfTurnLogic() {
+        self.game.getPlayers()
+        self.gamePlayersVC.gamePlayers = self.game.players
+        self.gamePlayersVC.presenting = true
+        self.gamePlayersVC.isWerewolf = true
+        self.gameVC.present(self.gamePlayersVC, animated: true, completion: nil)
+        self.gamePlayersVC.collectionView.reloadData()
     }
     
     func playerJoined() {
@@ -104,5 +110,14 @@ extension ApplicationCoordinator: GameDelegate {
     
     func cardDealt(card: Card) {
         gameVC.imageView.image = card.type.image
+        if card.type == .wolf {
+            game.wereworlfTurn()
+        }
+    }
+}
+
+extension ApplicationCoordinator: GamePlayersViewControllerDelegate {
+    func kill(player: Player) {
+        game.deadPlayer.append(player)
     }
 }

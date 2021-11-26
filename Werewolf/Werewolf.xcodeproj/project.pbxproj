@@ -29,6 +29,8 @@
 		94708F542750797F0077E204 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F532750797F0077E204 /* Player.swift */; };
 		94708F5A27507AE10077E204 /* GamePlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F5927507AE10077E204 /* GamePlayersViewController.swift */; };
 		94708F5F27507F450077E204 /* GamePlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F5E27507F450077E204 /* GamePlayerCell.swift */; };
+		94708F612750CB170077E204 /* GamePlayersViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F602750CB170077E204 /* GamePlayersViewControllerDelegate.swift */; };
+		94708F632750CBB20077E204 /* GamePlayerCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F622750CBB20077E204 /* GamePlayerCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		94708F532750797F0077E204 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		94708F5927507AE10077E204 /* GamePlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayersViewController.swift; sourceTree = "<group>"; };
 		94708F5E27507F450077E204 /* GamePlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayerCell.swift; sourceTree = "<group>"; };
+		94708F602750CB170077E204 /* GamePlayersViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayersViewControllerDelegate.swift; sourceTree = "<group>"; };
+		94708F622750CBB20077E204 /* GamePlayerCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayerCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +175,7 @@
 			isa = PBXGroup;
 			children = (
 				94708F5E27507F450077E204 /* GamePlayerCell.swift */,
+				94708F622750CBB20077E204 /* GamePlayerCellViewModel.swift */,
 				94708F5D27507F300077E204 /* Players */,
 				94708F5B27507F210077E204 /* Lobby */,
 				94708F5C27507F280077E204 /* Game */,
@@ -218,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				94708F5927507AE10077E204 /* GamePlayersViewController.swift */,
+				94708F602750CB170077E204 /* GamePlayersViewControllerDelegate.swift */,
 			);
 			path = Players;
 			sourceTree = "<group>";
@@ -352,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94708F612750CB170077E204 /* GamePlayersViewControllerDelegate.swift in Sources */,
 				94708F4627506FC80077E204 /* Deck.swift in Sources */,
 				94708F0C27506A590077E204 /* AppDelegate.swift in Sources */,
 				94708F5F27507F450077E204 /* GamePlayerCell.swift in Sources */,
@@ -368,6 +375,7 @@
 				94708F4427506F780077E204 /* Game.swift in Sources */,
 				94708F502750771E0077E204 /* GameViewControllerDelegate.swift in Sources */,
 				94708F542750797F0077E204 /* Player.swift in Sources */,
+				94708F632750CBB20077E204 /* GamePlayerCellViewModel.swift in Sources */,
 				94708F4C2750721E0077E204 /* ApplicationCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

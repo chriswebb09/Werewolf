@@ -10,6 +10,9 @@ import UIKit
 class GamePlayersViewController: UIViewController {
     
     var collectionView: UICollectionView!
+    weak var delegate: GamePlayersViewControllerDelegate?
+    var isWerewolf: Bool = false
+    var numberOfPlayersCanKill = 1
     
     let flowLayout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -50,7 +53,6 @@ class GamePlayersViewController: UIViewController {
         collectionView.reloadData()
     }
     
-    
     override func endAppearanceTransition() {
         if isBeingDismissed{
             presenting = false
@@ -67,8 +69,13 @@ extension GamePlayersViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GamePlayerCell.reuseID, for: indexPath) as! GamePlayerCell
         let player = gamePlayers[indexPath.row]
-        dump(player)
         cell.imageView.image = player.card?.type.image
+        if !player.playerInGame {
+            cell.setAction(kill: true)
+            print("\n\n\(indexPath.row)")
+            print(player.name)
+            return cell
+        }
         return cell
     }
 }
@@ -85,12 +92,26 @@ extension GamePlayersViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let player = gamePlayers[indexPath.row]
-        dump(player)
         guard let cell = collectionView.cellForItem(at: indexPath) as? GamePlayerCell else {
             return
         }
-        // if you have the current cell then flip
-        cell.flip()
-        // you can save it for reflip on didscroll
+        
+        if isWerewolf {
+            if self.numberOfPlayersCanKill > 0 {
+                cell.setAction(kill: true)
+                player.playerInGame = false
+                gamePlayers[indexPath.row] = player
+                delegate?.kill(player: player)
+                self.numberOfPlayersCanKill -= 1
+                self.collectionView.reloadData()
+            }
+            
+            if self.numberOfPlayersCanKill == 0 {
+                self.dismiss(animated: true, completion: nil)
+            }
+            
+        } else {
+            cell.setAction(kill: false)
+        }
     }
 }

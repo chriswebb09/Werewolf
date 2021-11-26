@@ -28,9 +28,10 @@ class GameViewController: UIViewController {
     }()
     
     var playersJoined: Bool = false
-    
     weak var delegate: GameViewControllerDelegate?
-
+    var isHost: Bool = false
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -46,19 +47,22 @@ class GameViewController: UIViewController {
     }
     
     func setup() {
-        view.addSubview(imageView)
-        imageView.backgroundColor = .blue
-        view.addSubview(sendCardButton)
-        sendCardButton.tintColor = .blue
-        sendCardButton.backgroundColor = .blue
-        sendCardButton.setTitle("SEND CARD", for: .normal)
-        sendCardButton.addTarget(self, action: #selector(sendCard(_:)), for: .touchUpInside)
-        
-        view.addSubview(showPlayersButton)
-        showPlayersButton.tintColor = .blue
-        showPlayersButton.backgroundColor = .blue
-        showPlayersButton.setTitle("SHOW PLAYERS", for: .normal)
-        showPlayersButton.addTarget(self, action: #selector(showPlayers(_:)), for: .touchUpInside)
+        if !isHost {
+            view.addSubview(imageView)
+        } else {
+            imageView.backgroundColor = .lightGray
+            view.addSubview(sendCardButton)
+            sendCardButton.tintColor = .blue
+            sendCardButton.backgroundColor = .blue
+            sendCardButton.setTitle("SEND CARD", for: .normal)
+            sendCardButton.addTarget(self, action: #selector(sendCard(_:)), for: .touchUpInside)
+            
+            view.addSubview(showPlayersButton)
+            showPlayersButton.tintColor = .blue
+            showPlayersButton.backgroundColor = .blue
+            showPlayersButton.setTitle("SHOW PLAYERS", for: .normal)
+            showPlayersButton.addTarget(self, action: #selector(showPlayers(_:)), for: .touchUpInside)
+        }
     }
     
     @objc func sendCard(_ sender: Any) {

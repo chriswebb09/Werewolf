@@ -7,16 +7,6 @@
 
 import UIKit
 
-class GamePlayerCellViewModel {
-    var player: Player
-    var card: Card
-    
-    init(player: Player, card: Card) {
-        self.player = player
-        self.card = card
-    }
-}
-
 class GamePlayerCell: UICollectionViewCell {
     
     static let reuseID = "GamePlayerCell"
@@ -35,6 +25,7 @@ class GamePlayerCell: UICollectionViewCell {
         let imageView = UIImageView()
         imageView.backgroundColor = .gray
         imageView.layer.cornerRadius = 40
+        
         return imageView
     }()
     
@@ -48,18 +39,35 @@ class GamePlayerCell: UICollectionViewCell {
         contentView.addSubview(imageView)
         imageView.frame = contentView.frame
         imageView.layer.cornerRadius = 40
-        
+        imageView.layer.masksToBounds = true
         contentView.addSubview(blankImage)
         blankImage.frame = contentView.frame
         blankImage.layer.cornerRadius = 40
         
     }
     
-    func flip() {
+    func setAction(kill: Bool) {
+        if kill {
+            self.setToDead()
+        } else {
+            self.flip()
+        }
+    }
+    
+    private func flip() {
         let flipSide: UIView.AnimationOptions = blankImage.isHidden ? .transitionFlipFromLeft : .transitionFlipFromRight
         UIView.transition(with: self.contentView, duration: 0.3, options: flipSide, animations: { [weak self]  () -> Void in
             self?.imageView.isHidden = !(self?.imageView.isHidden ?? true)
             self?.blankImage.isHidden = !(self?.blankImage.isHidden ?? false)
         }, completion: nil)
+    }
+    
+    private func setToDead() {
+        blankImage.image = UIImage(systemName: "xmark")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.blankImage.image = nil
     }
 }

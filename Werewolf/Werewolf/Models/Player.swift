@@ -11,6 +11,7 @@ class Player {
     var name: String
     var deviceID: String
     var card: Card?
+    var playerInGame: Bool = true
     
     init(name: String, deviceID: String) {
         self.name = name
