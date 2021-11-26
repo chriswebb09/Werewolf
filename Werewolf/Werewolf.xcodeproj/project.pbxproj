@@ -1,0 +1,633 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		94708F0C27506A590077E204 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F0B27506A590077E204 /* AppDelegate.swift */; };
+		94708F0E27506A590077E204 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F0D27506A590077E204 /* SceneDelegate.swift */; };
+		94708F1027506A590077E204 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F0F27506A590077E204 /* ViewController.swift */; };
+		94708F1527506A5A0077E204 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 94708F1427506A5A0077E204 /* Assets.xcassets */; };
+		94708F1827506A5A0077E204 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 94708F1627506A5A0077E204 /* LaunchScreen.storyboard */; };
+		94708F2327506A5A0077E204 /* WerewolfTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F2227506A5A0077E204 /* WerewolfTests.swift */; };
+		94708F2D27506A5A0077E204 /* WerewolfUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F2C27506A5A0077E204 /* WerewolfUITests.swift */; };
+		94708F2F27506A5A0077E204 /* WerewolfUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F2E27506A5A0077E204 /* WerewolfUITestsLaunchTests.swift */; };
+		94708F3C27506DA80077E204 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F3B27506DA80077E204 /* Card.swift */; };
+		94708F3E27506DB10077E204 /* CardType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F3D27506DB10077E204 /* CardType.swift */; };
+		94708F4027506DCB0077E204 /* GameNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F3F27506DCB0077E204 /* GameNetwork.swift */; };
+		94708F4227506DD60077E204 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F4127506DD60077E204 /* Logger.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		94708F1F27506A5A0077E204 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94708F0027506A590077E204 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94708F0727506A590077E204;
+			remoteInfo = Werewolf;
+		};
+		94708F2927506A5A0077E204 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 94708F0027506A590077E204 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 94708F0727506A590077E204;
+			remoteInfo = Werewolf;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		94708F0827506A590077E204 /* Werewolf.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Werewolf.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		94708F0B27506A590077E204 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		94708F0D27506A590077E204 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		94708F0F27506A590077E204 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		94708F1427506A5A0077E204 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		94708F1727506A5A0077E204 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		94708F1927506A5A0077E204 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		94708F1E27506A5A0077E204 /* WerewolfTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WerewolfTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		94708F2227506A5A0077E204 /* WerewolfTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WerewolfTests.swift; sourceTree = "<group>"; };
+		94708F2827506A5A0077E204 /* WerewolfUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = WerewolfUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		94708F2C27506A5A0077E204 /* WerewolfUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WerewolfUITests.swift; sourceTree = "<group>"; };
+		94708F2E27506A5A0077E204 /* WerewolfUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WerewolfUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		94708F3B27506DA80077E204 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
+		94708F3D27506DB10077E204 /* CardType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardType.swift; sourceTree = "<group>"; };
+		94708F3F27506DCB0077E204 /* GameNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameNetwork.swift; sourceTree = "<group>"; };
+		94708F4127506DD60077E204 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		94708F0527506A590077E204 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94708F1B27506A5A0077E204 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94708F2527506A5A0077E204 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		94708EFF27506A590077E204 = {
+			isa = PBXGroup;
+			children = (
+				94708F0A27506A590077E204 /* Werewolf */,
+				94708F2127506A5A0077E204 /* WerewolfTests */,
+				94708F2B27506A5A0077E204 /* WerewolfUITests */,
+				94708F0927506A590077E204 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		94708F0927506A590077E204 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				94708F0827506A590077E204 /* Werewolf.app */,
+				94708F1E27506A5A0077E204 /* WerewolfTests.xctest */,
+				94708F2827506A5A0077E204 /* WerewolfUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		94708F0A27506A590077E204 /* Werewolf */ = {
+			isa = PBXGroup;
+			children = (
+				94708F0B27506A590077E204 /* AppDelegate.swift */,
+				94708F0D27506A590077E204 /* SceneDelegate.swift */,
+				94708F0F27506A590077E204 /* ViewController.swift */,
+				94708F1427506A5A0077E204 /* Assets.xcassets */,
+				94708F1627506A5A0077E204 /* LaunchScreen.storyboard */,
+				94708F1927506A5A0077E204 /* Info.plist */,
+				94708F3B27506DA80077E204 /* Card.swift */,
+				94708F3D27506DB10077E204 /* CardType.swift */,
+				94708F3F27506DCB0077E204 /* GameNetwork.swift */,
+				94708F4127506DD60077E204 /* Logger.swift */,
+			);
+			path = Werewolf;
+			sourceTree = "<group>";
+		};
+		94708F2127506A5A0077E204 /* WerewolfTests */ = {
+			isa = PBXGroup;
+			children = (
+				94708F2227506A5A0077E204 /* WerewolfTests.swift */,
+			);
+			path = WerewolfTests;
+			sourceTree = "<group>";
+		};
+		94708F2B27506A5A0077E204 /* WerewolfUITests */ = {
+			isa = PBXGroup;
+			children = (
+				94708F2C27506A5A0077E204 /* WerewolfUITests.swift */,
+				94708F2E27506A5A0077E204 /* WerewolfUITestsLaunchTests.swift */,
+			);
+			path = WerewolfUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		94708F0727506A590077E204 /* Werewolf */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94708F3227506A5A0077E204 /* Build configuration list for PBXNativeTarget "Werewolf" */;
+			buildPhases = (
+				94708F0427506A590077E204 /* Sources */,
+				94708F0527506A590077E204 /* Frameworks */,
+				94708F0627506A590077E204 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Werewolf;
+			productName = Werewolf;
+			productReference = 94708F0827506A590077E204 /* Werewolf.app */;
+			productType = "com.apple.product-type.application";
+		};
+		94708F1D27506A5A0077E204 /* WerewolfTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94708F3527506A5A0077E204 /* Build configuration list for PBXNativeTarget "WerewolfTests" */;
+			buildPhases = (
+				94708F1A27506A5A0077E204 /* Sources */,
+				94708F1B27506A5A0077E204 /* Frameworks */,
+				94708F1C27506A5A0077E204 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				94708F2027506A5A0077E204 /* PBXTargetDependency */,
+			);
+			name = WerewolfTests;
+			productName = WerewolfTests;
+			productReference = 94708F1E27506A5A0077E204 /* WerewolfTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		94708F2727506A5A0077E204 /* WerewolfUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 94708F3827506A5A0077E204 /* Build configuration list for PBXNativeTarget "WerewolfUITests" */;
+			buildPhases = (
+				94708F2427506A5A0077E204 /* Sources */,
+				94708F2527506A5A0077E204 /* Frameworks */,
+				94708F2627506A5A0077E204 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				94708F2A27506A5A0077E204 /* PBXTargetDependency */,
+			);
+			name = WerewolfUITests;
+			productName = WerewolfUITests;
+			productReference = 94708F2827506A5A0077E204 /* WerewolfUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		94708F0027506A590077E204 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					94708F0727506A590077E204 = {
+						CreatedOnToolsVersion = 13.1;
+					};
+					94708F1D27506A5A0077E204 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 94708F0727506A590077E204;
+					};
+					94708F2727506A5A0077E204 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 94708F0727506A590077E204;
+					};
+				};
+			};
+			buildConfigurationList = 94708F0327506A590077E204 /* Build configuration list for PBXProject "Werewolf" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 94708EFF27506A590077E204;
+			productRefGroup = 94708F0927506A590077E204 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				94708F0727506A590077E204 /* Werewolf */,
+				94708F1D27506A5A0077E204 /* WerewolfTests */,
+				94708F2727506A5A0077E204 /* WerewolfUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		94708F0627506A590077E204 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94708F1827506A5A0077E204 /* LaunchScreen.storyboard in Resources */,
+				94708F1527506A5A0077E204 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94708F1C27506A5A0077E204 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94708F2627506A5A0077E204 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		94708F0427506A590077E204 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94708F1027506A590077E204 /* ViewController.swift in Sources */,
+				94708F0C27506A590077E204 /* AppDelegate.swift in Sources */,
+				94708F0E27506A590077E204 /* SceneDelegate.swift in Sources */,
+				94708F3E27506DB10077E204 /* CardType.swift in Sources */,
+				94708F4227506DD60077E204 /* Logger.swift in Sources */,
+				94708F4027506DCB0077E204 /* GameNetwork.swift in Sources */,
+				94708F3C27506DA80077E204 /* Card.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94708F1A27506A5A0077E204 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94708F2327506A5A0077E204 /* WerewolfTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		94708F2427506A5A0077E204 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				94708F2F27506A5A0077E204 /* WerewolfUITestsLaunchTests.swift in Sources */,
+				94708F2D27506A5A0077E204 /* WerewolfUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		94708F2027506A5A0077E204 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 94708F0727506A590077E204 /* Werewolf */;
+			targetProxy = 94708F1F27506A5A0077E204 /* PBXContainerItemProxy */;
+		};
+		94708F2A27506A5A0077E204 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 94708F0727506A590077E204 /* Werewolf */;
+			targetProxy = 94708F2927506A5A0077E204 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		94708F1627506A5A0077E204 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				94708F1727506A5A0077E204 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		94708F3027506A5A0077E204 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		94708F3127506A5A0077E204 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		94708F3327506A5A0077E204 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4SZP4Q326F;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Werewolf/Info.plist;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Reason for using Bonjour that the user can understand";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.froleeyo.Werewolf;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		94708F3427506A5A0077E204 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4SZP4Q326F;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Werewolf/Info.plist;
+				INFOPLIST_KEY_NSLocalNetworkUsageDescription = "Reason for using Bonjour that the user can understand";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.froleeyo.Werewolf;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		94708F3627506A5A0077E204 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4SZP4Q326F;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.froleeyo.WerewolfTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Werewolf.app/Werewolf";
+			};
+			name = Debug;
+		};
+		94708F3727506A5A0077E204 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4SZP4Q326F;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.froleeyo.WerewolfTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Werewolf.app/Werewolf";
+			};
+			name = Release;
+		};
+		94708F3927506A5A0077E204 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4SZP4Q326F;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.froleeyo.WerewolfUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Werewolf;
+			};
+			name = Debug;
+		};
+		94708F3A27506A5A0077E204 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 4SZP4Q326F;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.froleeyo.WerewolfUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = Werewolf;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		94708F0327506A590077E204 /* Build configuration list for PBXProject "Werewolf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94708F3027506A5A0077E204 /* Debug */,
+				94708F3127506A5A0077E204 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94708F3227506A5A0077E204 /* Build configuration list for PBXNativeTarget "Werewolf" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94708F3327506A5A0077E204 /* Debug */,
+				94708F3427506A5A0077E204 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94708F3527506A5A0077E204 /* Build configuration list for PBXNativeTarget "WerewolfTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94708F3627506A5A0077E204 /* Debug */,
+				94708F3727506A5A0077E204 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		94708F3827506A5A0077E204 /* Build configuration list for PBXNativeTarget "WerewolfUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				94708F3927506A5A0077E204 /* Debug */,
+				94708F3A27506A5A0077E204 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 94708F0027506A590077E204 /* Project object */;
+}
