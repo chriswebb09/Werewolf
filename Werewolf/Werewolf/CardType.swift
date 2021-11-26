@@ -8,7 +8,7 @@
 import UIKit
 
 enum CardType: String, CaseIterable {
-    case wolf, villager, seer
+    case wolf, villager, seer, tanner
     
     var image: UIImage {
         switch self {
@@ -18,6 +18,8 @@ enum CardType: String, CaseIterable {
             return UIImage(named: "Villager")!
         case .seer:
             return UIImage(named: "Seer")!
+        case .tanner:
+            return UIImage(named: "Tanner")!
         }
     }
     
@@ -29,6 +31,8 @@ enum CardType: String, CaseIterable {
             return "Seer"
         case .villager:
             return "Villager"
+        case .tanner:
+            return "Tanner"
         }
     }
 }
