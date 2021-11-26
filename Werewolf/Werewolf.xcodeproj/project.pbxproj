@@ -26,6 +26,9 @@
 		94708F4E275077090077E204 /* LobbyViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F4D275077090077E204 /* LobbyViewControllerDelegate.swift */; };
 		94708F502750771E0077E204 /* GameViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F4F2750771E0077E204 /* GameViewControllerDelegate.swift */; };
 		94708F52275077790077E204 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F51275077790077E204 /* Coordinator.swift */; };
+		94708F542750797F0077E204 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F532750797F0077E204 /* Player.swift */; };
+		94708F5A27507AE10077E204 /* GamePlayersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F5927507AE10077E204 /* GamePlayersViewController.swift */; };
+		94708F5F27507F450077E204 /* GamePlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94708F5E27507F450077E204 /* GamePlayerCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +72,9 @@
 		94708F4D275077090077E204 /* LobbyViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LobbyViewControllerDelegate.swift; sourceTree = "<group>"; };
 		94708F4F2750771E0077E204 /* GameViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewControllerDelegate.swift; sourceTree = "<group>"; };
 		94708F51275077790077E204 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		94708F532750797F0077E204 /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
+		94708F5927507AE10077E204 /* GamePlayersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayersViewController.swift; sourceTree = "<group>"; };
+		94708F5E27507F450077E204 /* GamePlayerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePlayerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,18 +130,10 @@
 				94708F1427506A5A0077E204 /* Assets.xcassets */,
 				94708F1627506A5A0077E204 /* LaunchScreen.storyboard */,
 				94708F1927506A5A0077E204 /* Info.plist */,
-				94708F3B27506DA80077E204 /* Card.swift */,
-				94708F4327506F780077E204 /* Game.swift */,
-				94708F4527506FC80077E204 /* Deck.swift */,
-				94708F3D27506DB10077E204 /* CardType.swift */,
-				94708F3F27506DCB0077E204 /* GameNetwork.swift */,
-				94708F472750706F0077E204 /* LobbyViewController.swift */,
-				94708F4D275077090077E204 /* LobbyViewControllerDelegate.swift */,
-				94708F49275071460077E204 /* GameViewController.swift */,
-				94708F4F2750771E0077E204 /* GameViewControllerDelegate.swift */,
-				94708F4B2750721E0077E204 /* ApplicationCoordinator.swift */,
-				94708F51275077790077E204 /* Coordinator.swift */,
-				94708F4127506DD60077E204 /* Logger.swift */,
+				94708F55275079C80077E204 /* Models */,
+				94708F58275079F70077E204 /* Services */,
+				94708F56275079D10077E204 /* ViewControllers */,
+				94708F57275079E10077E204 /* Coordinator */,
 			);
 			path = Werewolf;
 			sourceTree = "<group>";
@@ -155,6 +153,73 @@
 				94708F2E27506A5A0077E204 /* WerewolfUITestsLaunchTests.swift */,
 			);
 			path = WerewolfUITests;
+			sourceTree = "<group>";
+		};
+		94708F55275079C80077E204 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				94708F3B27506DA80077E204 /* Card.swift */,
+				94708F4327506F780077E204 /* Game.swift */,
+				94708F532750797F0077E204 /* Player.swift */,
+				94708F4527506FC80077E204 /* Deck.swift */,
+				94708F3D27506DB10077E204 /* CardType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		94708F56275079D10077E204 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				94708F5E27507F450077E204 /* GamePlayerCell.swift */,
+				94708F5D27507F300077E204 /* Players */,
+				94708F5B27507F210077E204 /* Lobby */,
+				94708F5C27507F280077E204 /* Game */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		94708F57275079E10077E204 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				94708F4B2750721E0077E204 /* ApplicationCoordinator.swift */,
+				94708F51275077790077E204 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		94708F58275079F70077E204 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				94708F3F27506DCB0077E204 /* GameNetwork.swift */,
+				94708F4127506DD60077E204 /* Logger.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		94708F5B27507F210077E204 /* Lobby */ = {
+			isa = PBXGroup;
+			children = (
+				94708F472750706F0077E204 /* LobbyViewController.swift */,
+				94708F4D275077090077E204 /* LobbyViewControllerDelegate.swift */,
+			);
+			path = Lobby;
+			sourceTree = "<group>";
+		};
+		94708F5C27507F280077E204 /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				94708F49275071460077E204 /* GameViewController.swift */,
+				94708F4F2750771E0077E204 /* GameViewControllerDelegate.swift */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
+		94708F5D27507F300077E204 /* Players */ = {
+			isa = PBXGroup;
+			children = (
+				94708F5927507AE10077E204 /* GamePlayersViewController.swift */,
+			);
+			path = Players;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -289,7 +354,9 @@
 			files = (
 				94708F4627506FC80077E204 /* Deck.swift in Sources */,
 				94708F0C27506A590077E204 /* AppDelegate.swift in Sources */,
+				94708F5F27507F450077E204 /* GamePlayerCell.swift in Sources */,
 				94708F482750706F0077E204 /* LobbyViewController.swift in Sources */,
+				94708F5A27507AE10077E204 /* GamePlayersViewController.swift in Sources */,
 				94708F0E27506A590077E204 /* SceneDelegate.swift in Sources */,
 				94708F3E27506DB10077E204 /* CardType.swift in Sources */,
 				94708F4227506DD60077E204 /* Logger.swift in Sources */,
@@ -300,6 +367,7 @@
 				94708F4A275071460077E204 /* GameViewController.swift in Sources */,
 				94708F4427506F780077E204 /* Game.swift in Sources */,
 				94708F502750771E0077E204 /* GameViewControllerDelegate.swift in Sources */,
+				94708F542750797F0077E204 /* Player.swift in Sources */,
 				94708F4C2750721E0077E204 /* ApplicationCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

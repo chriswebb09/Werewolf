@@ -15,4 +15,8 @@ class Card: ObservableObject {
         self.name = name
         self.type = type
     }
+    
+    static func createCard(type: CardType) -> Card {
+        return Card(name: type.name, type: type)
+    }
 }

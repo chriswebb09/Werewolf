@@ -7,26 +7,39 @@
 
 import MultipeerConnectivity
 
+enum RequestType: String {
+    case sendCard
+    case dealCard
+    case sendHostId
+}
+
+protocol GameMultipeerSessionDelegate: AnyObject {
+    func gamePlayersJoined()
+    func playerUpdated(player: Player)
+}
+
 class GameMultipeerSession: NSObject, ObservableObject {
     
-    private let serviceType = "http"
+    weak var delegate: GameMultipeerSessionDelegate?
     
+    private let serviceType = "http"
     private let session: MCSession
     private let myPeerId = MCPeerID(displayName: UIDevice.current.name)
     private var serviceAdvertiser: MCNearbyServiceAdvertiser
     private var serviceBrowser: MCNearbyServiceBrowser
     private var advertiserAssistant: MCNearbyServiceAdvertiser?
-    
+    private var isHost: Bool = false
+    private var hostId: String = ""
     @Published var currentCard: Card? = nil
-    
     var connectedPeers: [MCPeerID] = []
+    var waitingForCards: Bool = false
     
     override init() {
         precondition(Thread.isMainThread)
-        self.currentCard = Card(name: "Test", type: .seer)
-        self.session = MCSession(peer: myPeerId)
-        self.serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerId, discoveryInfo: nil, serviceType: serviceType)
-        self.serviceBrowser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: serviceType)
+        currentCard = Card(name: CardType.blank.name, type: .blank)
+        session = MCSession(peer: myPeerId)
+        serviceAdvertiser = MCNearbyServiceAdvertiser(peer: myPeerId, discoveryInfo: nil, serviceType: serviceType)
+        serviceBrowser = MCNearbyServiceBrowser(peer: myPeerId, serviceType: serviceType)
         super.init()
         session.delegate = self
     }
@@ -37,6 +50,7 @@ class GameMultipeerSession: NSObject, ObservableObject {
         advertiserAssistant = MCNearbyServiceAdvertiser(peer: myPeerId, discoveryInfo: nil, serviceType: "http")
         advertiserAssistant?.delegate = self
         advertiserAssistant?.startAdvertisingPeer()
+        self.isHost = true
     }
     
     func join() {
@@ -49,6 +63,7 @@ class GameMultipeerSession: NSObject, ObservableObject {
                 mcBrowserViewController.view.backgroundColor = .white
                 appWindow.rootViewController?.present(mcBrowserViewController, animated: true)
                 appWindow.makeKeyAndVisible()
+                self.isHost = false
             }
         }
     }
@@ -58,34 +73,69 @@ class GameMultipeerSession: NSObject, ObservableObject {
         self.serviceBrowser.stopBrowsingForPeers()
     }
     
-    func send(card: CardType) {
+    func send(card: CardType, id: MCPeerID) {
         precondition(Thread.isMainThread)
-        Logger.log("Card: \(String(describing: card)) to \(self.session.connectedPeers.count) peers")
+        Logger.log("Card: \(String(describing: card)) to \(id) peers")
         if !session.connectedPeers.isEmpty {
             do {
-                try session.send(card.rawValue.data(using: .utf8)!, toPeers: session.connectedPeers, with: .reliable)
+                try session.send(card.rawValue.data(using: .utf8)!, toPeers: [id], with: .reliable)
             } catch {
                 Logger.log("Error for sending: \(String(describing: error))")
             }
         }
     }
     
-    func sendCard() {
-        DispatchQueue.main.async {
-            self.showCardSheet()
+    func requestCard(id: MCPeerID) {
+        precondition(Thread.isMainThread)
+        print("requesting card from \(id)")
+        if !session.connectedPeers.isEmpty {
+            do {
+                print(RequestType.sendCard.rawValue)
+                try session.send(RequestType.sendCard.rawValue.data(using: .utf8)!, toPeers: [id], with: .reliable)
+            } catch {
+                Logger.log("Error for sending: \(String(describing: error))")
+            }
         }
     }
     
-    private func showCardSheet() {
+    func sendHostID(hostId: MCPeerID, id: MCPeerID) {
+        precondition(Thread.isMainThread)
+        if !session.connectedPeers.isEmpty {
+            do {
+                let sendData = RequestType.sendHostId.rawValue + " " + hostId.displayName
+                try session.send(sendData.data(using: .utf8)!, toPeers: [id], with: .reliable)
+            } catch {
+                Logger.log("Error for sending: \(String(describing: error))")
+            }
+        }
+    }
+    
+    
+    func sendCard(id: MCPeerID, type: RequestType) {
+        print(type)
+        if type == .sendCard {
+            self.send(card: currentCard!.type, id: id)
+        } else if type == .dealCard {
+            DispatchQueue.main.async {
+                self.showCardSheet(id: id)
+            }
+        }
+    }
+    
+    func getIDs() -> [MCPeerID]  {
+        return connectedPeers
+    }
+    
+    private func showCardSheet(id: MCPeerID) {
         let villagerAction = UIAlertAction(title: "Villager", style: .default, handler: { action in
-            self.send(card: .villager)
+            self.send(card: .villager, id: id)
         })
         let seerAction = UIAlertAction(title: "Seer", style: .default, handler: { action in
-            self.send(card: .seer)
+            self.send(card: .seer, id: id)
         })
         
         let werewolfAction = UIAlertAction(title: "Werewolf", style: .default, handler: { action in
-            self.send(card: .wolf)
+            self.send(card: .wolf, id: id)
         })
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let alertController = UIAlertController(title: "Pick a card type", message: "", preferredStyle: .actionSheet)
@@ -96,7 +146,6 @@ class GameMultipeerSession: NSObject, ObservableObject {
         if let appWindow = UIApplication.shared.keyWindow {
             appWindow.rootViewController?.present(alertController, animated: true, completion: nil)
         }
-        
     }
 }
 
@@ -147,6 +196,13 @@ extension GameMultipeerSession: MCSessionDelegate {
         switch state {
         case .connected:
             print("Connected to \(peerID)")
+            if isHost {
+                print("IS HOST")
+                DispatchQueue.main.async {
+                    self.sendHostID(hostId: self.myPeerId, id: peerID)
+                }
+            }
+            delegate?.gamePlayersJoined()
         case .connecting:
             print("Connecting \(peerID)")
         case .notConnected:
@@ -161,11 +217,35 @@ extension GameMultipeerSession: MCSessionDelegate {
     }
     
     func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID) {
-        if let string = String(data: data, encoding: .utf8), let card = CardType(rawValue: string) {
-            Logger.log("didReceive card \(string)")
-            DispatchQueue.main.async {
-                self.currentCard?.type = card
+        print("func session(_ session: MCSession, didReceive data: Data, fromPeer peerID: MCPeerID)")
+        if let string = String(data: data, encoding: .utf8), let requestType = RequestType(rawValue: string) {
+            print(requestType)
+            if self.isHost {
+                
+            } else {
+                DispatchQueue.main.async {
+                    self.send(card: self.currentCard!.type, id: peerID)
+                }
             }
+        } else if let string = String(data: data, encoding: .utf8), let card = CardType(rawValue: string) {
+            print("recieved card")
+            if self.isHost {
+                // update
+                let player = Player(name: "Player " + peerID.displayName, deviceID: peerID.displayName)
+                player.card = Card(name: card.name, type: card)
+                self.delegate?.playerUpdated(player: player)
+            } else {
+                DispatchQueue.main.async {
+                    self.currentCard?.type = card
+                }
+            }
+        } else if let string = String(data: data, encoding: .utf8) {
+            print(string)
+            let components = string.components(separatedBy: " ")
+            if let requestType = RequestType(rawValue: components[0]), requestType == .sendHostId {
+                self.hostId = components[1]
+            }
+            
         } else {
             Logger.log("didReceive invalid value \(data.count) bytes")
         }
@@ -181,6 +261,11 @@ extension GameMultipeerSession: MCSessionDelegate {
     
     public func session(_ session: MCSession, didFinishReceivingResourceWithName resourceName: String, fromPeer peerID: MCPeerID, at localURL: URL?, withError error: Error?) {
         Logger.log("Receiving resources is not supported")
+    }
+    
+    func session(_ session: MCSession, didReceiveCertificate certificate: [Any]?, fromPeer peerID: MCPeerID, certificateHandler: @escaping (Bool) -> Void) {
+        print("session(_ session: MCSession, didReceiveCertificate certificate: [Any]?, fromPeer peerID: MCPeerID, certificateHandler: @escaping (Bool) -> Void)")
+        certificateHandler(true)
     }
 }
 

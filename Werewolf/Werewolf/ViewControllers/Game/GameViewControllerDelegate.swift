@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import UIKit
 
 protocol GameViewControllerDelegate: AnyObject {
-    func sendCard()
+    func sendCard(id: Int)
+    func presentGamePlayers(navigationController: UIViewController)
 }
