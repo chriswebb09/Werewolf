@@ -6,28 +6,20 @@
 //
 
 import UIKit
-import Combine
-import MultipeerConnectivity
-import SwiftUI
-
-protocol LobbyViewControllerDelegate: AnyObject {
-    func goToGame()
-    func hostGame()
-    func joinGame()
-}
 
 class LobbyViewController: UIViewController {
     
     weak var delegate: LobbyViewControllerDelegate?
     
-    var joinButton: UIButton = UIButton(frame: CGRect(x: 30, y: 600, width: 150, height: 50))
-    var hostButton: UIButton = UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 180, y: 600, width: 150, height: 50))
+    var joinButton: UIButton = {
+        let joinButton = UIButton(frame: CGRect(x: 30, y: 600, width: 150, height: 50))
+        return joinButton
+    }()
     
-    @ObservedObject var multipeer = GameMultipeerSession()
-   
-    var card: Card!
-    
-    var cancellableBag = Set<AnyCancellable>()
+    var hostButton: UIButton = {
+        let hostButton =  UIButton(frame: CGRect(x: UIScreen.main.bounds.width - 180, y: 600, width: 150, height: 50))
+        return hostButton
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +28,12 @@ class LobbyViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.view.addSubview(joinButton)
-        self.view.addSubview(hostButton)
+        setup()
+    }
+    
+    func setup() {
+        view.addSubview(joinButton)
+        view.addSubview(hostButton)
         joinButton.tintColor = .blue
         hostButton.tintColor = .blue
         hostButton.backgroundColor = .blue
@@ -49,13 +45,11 @@ class LobbyViewController: UIViewController {
     }
     
     @objc func hostTapped(_ sender: Any) {
-      //  multipeer.host()
         delegate?.hostGame()
         delegate?.goToGame()
     }
     
     @objc func joinTapped(_ sender: Any) {
-       // multipeer.join()
         delegate?.joinGame()
         delegate?.goToGame()
     }
